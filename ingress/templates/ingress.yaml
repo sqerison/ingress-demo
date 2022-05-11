@@ -27,5 +27,5 @@ spec:
                 name: frontend
                 port:
                   name: http
-            path: /api
+            path: /api/
             pathType: Prefix
