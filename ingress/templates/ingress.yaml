@@ -22,24 +22,3 @@ spec:
                   name: use-annotation
             path: /test1/
             pathType: Prefix
-          - backend:
-              service:
-                name: ssl-redirect
-                port:
-                  name: use-annotation
-            path: /test2/
-            pathType: Prefix
-          - backend:
-              service:
-                name: {{ .Release.Name }}
-                port:
-                  number: 80
-            path: /test2/
-            pathType: Prefix
-          - backend:
-              service:
-                name: forward-rule
-                port:
-                  name: use-annotation
-            path: /
-            pathType: Prefix
