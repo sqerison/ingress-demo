@@ -17,8 +17,8 @@ spec:
         paths:
           - backend:
               service:
-                name: {{ .Release.Name }}
+                name: frontend
                 port:
                   name: http
-            path: /
+            path: /api
             pathType: Prefix
