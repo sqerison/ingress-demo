@@ -9,16 +9,16 @@ metadata:
     alb.ingress.kubernetes.io/ssl-policy: ELBSecurityPolicy-TLS-1-1-2017-01
     alb.ingress.kubernetes.io/target-type: ip
     kubernetes.io/ingress.class: alb
-  name: {{ .Release.Name }}-alb
+  name: {{ .Release.Name }}-dev
 spec:
   rules:
     - host: {{ .Release.Name }}.dev.apprecode.com
       http:
         paths:
-            - backend:
+          - backend:
               service:
                 name: redirect-to-assets
                 port:
                   name: use-annotation
-              path: /dev-test1/
-              pathType: Prefix
+            path: /dev-test1/
+            pathType: Prefix
