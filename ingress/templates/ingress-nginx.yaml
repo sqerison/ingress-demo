@@ -19,6 +19,6 @@ spec:
               service:
                 name: redirect-to-assets
                 port:
-                  name: use-annotation
-            path: /dev-test1/
+                  name: http
+            path: /
             pathType: Prefix
