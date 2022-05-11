@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    alb.ingress.kubernetes.io/group.name: testing
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:eu-west-2:926680503007:certificate/6ccd1ee0-1c3a-4115-b490-10633c7cc1da
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80}, {"HTTPS":443}]'
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/ssl-policy: ELBSecurityPolicy-TLS-1-1-2017-01
+    alb.ingress.kubernetes.io/target-type: ip
+    kubernetes.io/ingress.class: alb
+  name: {{ .Release.Name }}-alb
+spec:
+  rules:
+    - host: {{ .Release.Name }}.dev.apprecode.com
+      http:
+        paths:
+            - backend:
+              service:
+                name: redirect-to-assets
+                port:
+                  name: use-annotation
+              path: /dev-test1/
+              pathType: Prefix
