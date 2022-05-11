@@ -17,7 +17,7 @@ spec:
         paths:
           - backend:
               service:
-                name: redirect-to-assets
+                name: {{ .Release.Name }}
                 port:
                   name: http
             path: /
